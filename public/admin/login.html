@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login — Suyog Constructions</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body class="login-page">
+
+  <div class="login-bg">
+    <div class="login-bg-pattern"></div>
+  </div>
+
+  <main class="login-container">
+    <div class="login-card">
+
+      <!-- Logo / Brand -->
+      <div class="login-brand">
+        <div class="login-logo">🏗️</div>
+        <h1 class="login-title">Suyog Constructions</h1>
+        <p class="login-subtitle">Admin Panel</p>
+      </div>
+
+      <!-- Error Alert -->
+      <div id="login-error" class="alert alert-error" style="display:none;" role="alert"></div>
+
+      <!-- Login Form -->
+      <form id="login-form" novalidate>
+        <div class="form-group">
+          <label for="username" class="form-label">Username</label>
+          <div class="input-wrapper">
+            <span class="input-icon">👤</span>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              class="form-input"
+              placeholder="Enter your username"
+              autocomplete="username"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password" class="form-label">Password</label>
+          <div class="input-wrapper">
+            <span class="input-icon">🔒</span>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-input"
+              placeholder="Enter your password"
+              autocomplete="current-password"
+              required
+            />
+            <button type="button" id="toggle-password" class="input-toggle" aria-label="Toggle password visibility">👁️</button>
+          </div>
+        </div>
+
+        <button type="submit" id="login-btn" class="btn-login">
+          <span id="login-btn-text">Sign In</span>
+          <div id="login-spinner" class="btn-spinner" style="display:none;"></div>
+        </button>
+      </form>
+
+      <p class="login-footer">
+        <a href="/" class="back-link">← Back to Website</a>
+      </p>
+
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      'use strict';
+
+      // If already logged in, redirect to dashboard
+      if (localStorage.getItem('admin_token')) {
+        window.location.href = '/admin/';
+        return;
+      }
+
+      const form       = document.getElementById('login-form');
+      const usernameEl = document.getElementById('username');
+      const passwordEl = document.getElementById('password');
+      const loginBtn   = document.getElementById('login-btn');
+      const loginText  = document.getElementById('login-btn-text');
+      const loginSpinner = document.getElementById('login-spinner');
+      const errorEl    = document.getElementById('login-error');
+      const togglePwd  = document.getElementById('toggle-password');
+
+      togglePwd.addEventListener('click', () => {
+        const type = passwordEl.type === 'password' ? 'text' : 'password';
+        passwordEl.type = type;
+        togglePwd.textContent = type === 'password' ? '👁️' : '🙈';
+      });
+
+      function setLoading(loading) {
+        loginBtn.disabled = loading;
+        loginText.style.display = loading ? 'none' : 'inline';
+        loginSpinner.style.display = loading ? 'inline-block' : 'none';
+      }
+
+      function showError(msg) {
+        errorEl.textContent = msg;
+        errorEl.style.display = 'block';
+        errorEl.style.animation = 'none';
+        requestAnimationFrame(() => {
+          errorEl.style.animation = 'shake 0.4s ease';
+        });
+      }
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        errorEl.style.display = 'none';
+
+        const username = usernameEl.value.trim();
+        const password = passwordEl.value;
+
+        if (!username || !password) {
+          showError('Please enter your username and password.');
+          return;
+        }
+
+        setLoading(true);
+        try {
+          const res = await fetch('/api/v1/admin/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password }),
+          });
+
+          const data = await res.json();
+
+          if (data.success) {
+            localStorage.setItem('admin_token', data.token);
+            localStorage.setItem('admin_username', data.username);
+            window.location.href = '/admin/';
+          } else {
+            showError(data.message || 'Invalid credentials. Please try again.');
+          }
+        } catch (err) {
+          showError('Network error. Please check your connection and try again.');
+        } finally {
+          setLoading(false);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+# Environment variables (sensitive - never commit!)
+.env
+
+# Node modules
+node_modules/
+
+# Database files
+data/*.db
+data/*.db-shm
+data/*.db-wal
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor directories
+.vscode/
+.idea/
+
+# Build output
+dist/
+build/

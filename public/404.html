@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Page Not Found | Suyog Constructions</title>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <style>
+    .not-found {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: var(--color-bg);
+    }
+    .not-found-inner { max-width: 600px; padding: var(--space-8); }
+    .not-found-code {
+      font-family: var(--font-heading);
+      font-size: 8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--color-accent), var(--color-accent-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: var(--space-4);
+    }
+    .not-found-title { font-size: var(--text-3xl); margin-bottom: var(--space-4); }
+    .not-found-desc { color: var(--color-text-muted); margin-bottom: var(--space-10); font-size: var(--text-lg); }
+  </style>
+</head>
+<body>
+  <div class="not-found">
+    <div class="not-found-inner">
+      <div class="not-found-code">404</div>
+      <h1 class="not-found-title">Page Not Found</h1>
+      <p class="not-found-desc">The page you're looking for doesn't exist or has been moved. Let's get you back on track.</p>
+      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+        <a href="/" class="btn btn-primary btn-lg">🏠 Go to Homepage</a>
+        <a href="/contact" class="btn btn-secondary btn-lg">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

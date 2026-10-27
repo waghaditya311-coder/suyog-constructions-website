@@ -1,0 +1,102 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Suyog Constructions — CSS Design Variables
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root {
+  /* ── Colors ── */
+  --color-bg:           #0d0d1a;
+  --color-primary:      #1A1A2E;
+  --color-secondary:    #16213E;
+  --color-surface:      #0F3460;
+  --color-accent:       #C9A84C;
+  --color-accent-light: #E8C97A;
+  --color-accent-dark:  #A88730;
+  --color-text:         #F0EFE9;
+  --color-text-muted:   #A8A8B3;
+  --color-text-dark:    #6B6B7B;
+  --color-white:        #FFFFFF;
+  --color-success:      #4CAF50;
+  --color-error:        #F44336;
+  --color-warning:      #FF9800;
+  --color-border:       rgba(201, 168, 76, 0.2);
+  --color-border-hover: rgba(201, 168, 76, 0.5);
+
+  /* ── Typography ── */
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body:    'Inter', system-ui, -apple-system, sans-serif;
+  --font-accent:  'Montserrat', 'Inter', sans-serif;
+
+  /* ── Font Sizes ── */
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-lg:   1.125rem;
+  --text-xl:   1.25rem;
+  --text-2xl:  1.5rem;
+  --text-3xl:  1.875rem;
+  --text-4xl:  2.25rem;
+  --text-5xl:  3rem;
+  --text-6xl:  3.75rem;
+  --text-7xl:  4.5rem;
+
+  /* ── Font Weights ── */
+  --weight-normal:    400;
+  --weight-medium:    500;
+  --weight-semibold:  600;
+  --weight-bold:      700;
+  --weight-extrabold: 800;
+
+  /* ── Spacing ── */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.25rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* ── Borders ── */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-2xl:  32px;
+  --radius-full: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-sm:   0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md:   0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg:   0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-xl:   0 16px 48px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 24px rgba(201, 168, 76, 0.25);
+  --shadow-glow-lg: 0 0 48px rgba(201, 168, 76, 0.4);
+
+  /* ── Glass Effect ── */
+  --glass-bg:     rgba(255, 255, 255, 0.04);
+  --glass-bg-md:  rgba(255, 255, 255, 0.07);
+  --glass-bg-lg:  rgba(255, 255, 255, 0.1);
+  --glass-border: 1px solid rgba(201, 168, 76, 0.2);
+
+  /* ── Layout ── */
+  --container-max: 1280px;
+  --navbar-height: 80px;
+
+  /* ── Transitions ── */
+  --transition-fast:   150ms ease;
+  --transition-base:   250ms ease;
+  --transition-slow:   400ms ease;
+  --transition-slower: 600ms ease;
+
+  /* ── Z-index ── */
+  --z-base:    1;
+  --z-dropdown: 100;
+  --z-sticky:  200;
+  --z-overlay: 300;
+  --z-modal:   400;
+  --z-toast:   500;
+}

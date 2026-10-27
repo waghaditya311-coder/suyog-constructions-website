@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects Portfolio — Suyog Constructions | 500+ Completed Projects</title>
+  <meta name="description" content="Explore Suyog Constructions' project portfolio — 500+ completed residential, commercial, renovation, and interior design projects across Pune.">
+  <meta name="keywords" content="construction projects pune, portfolio, residential projects, commercial buildings, renovation portfolio">
+  <link rel="canonical" href="https://suyogconstructions.com/projects">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/pages.css">
+  <link rel="stylesheet" href="/css/animations.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="container navbar-inner">
+      <a href="/" class="navbar-logo">
+        <div class="logo-icon">🏗️</div>
+        <div class="logo-text">
+          <span class="logo-name">Suyog Constructions</span>
+          <span class="logo-tagline">Building Excellence</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/about" class="nav-link">About Us</a></li>
+        <li><a href="/services" class="nav-link">Services</a></li>
+        <li><a href="/projects" class="nav-link active">Projects</a></li>
+        <li><a href="/contact" class="nav-link">Contact</a></li>
+      </ul>
+      <a href="/contact#inquiry" class="nav-cta desktop">Get a Quote</a>
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/about" class="nav-link">About Us</a>
+    <a href="/services" class="nav-link">Services</a>
+    <a href="/projects" class="nav-link">Projects</a>
+    <a href="/contact" class="nav-link">Contact</a>
+    <a href="/contact#inquiry" class="nav-cta">Get a Free Quote</a>
+  </div>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Projects</span>
+      </nav>
+      <h1>Our <span>Project Portfolio</span></h1>
+      <p>500+ completed projects across Pune — each one a story of quality and craftsmanship.</p>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="section" id="portfolio" aria-labelledby="portfolio-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Our Work</span>
+        <h2 class="section-title reveal" id="portfolio-heading">
+          Completed &amp; <span>Ongoing Projects</span>
+        </h2>
+        <div class="gold-divider"></div>
+        <p class="section-subtitle reveal">Filter by category to explore our diverse portfolio of construction projects.</p>
+      </div>
+
+      <!-- Filter Bar -->
+      <div class="filter-bar reveal" id="filter-bar" role="group" aria-label="Filter projects">
+        <button class="filter-btn active" data-filter="all" id="filter-all">🏛️ All Projects</button>
+        <button class="filter-btn" data-filter="residential" id="filter-residential">🏠 Residential</button>
+        <button class="filter-btn" data-filter="commercial" id="filter-commercial">🏢 Commercial</button>
+        <button class="filter-btn" data-filter="renovation" id="filter-renovation">🔨 Renovation</button>
+        <button class="filter-btn" data-filter="interior" id="filter-interior">🎨 Interior</button>
+        <button class="filter-btn" data-filter="ongoing" id="filter-ongoing">🚧 Ongoing</button>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="projects-grid" id="projects-grid">
+        <!-- Project cards are injected by projects.js -->
+      </div>
+
+      <!-- Loading State -->
+      <div id="projects-loading" style="text-align:center; padding: var(--space-12);">
+        <div class="spinner" style="margin: 0 auto;"></div>
+        <p style="color: var(--color-text-muted); margin-top: var(--space-4);">Loading projects...</p>
+      </div>
+
+      <!-- Empty State -->
+      <div id="projects-empty" style="display:none; text-align:center; padding: var(--space-12);">
+        <div style="font-size: 60px; margin-bottom: var(--space-4);">🏗️</div>
+        <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-2);">No projects found</h3>
+        <p style="color: var(--color-text-muted);">Try selecting a different category filter.</p>
+      </div>
+
+      <!-- Load More -->
+      <div class="load-more-wrap" id="load-more-wrap" style="display:none;">
+        <button class="btn btn-ghost btn-lg" id="load-more-btn">Load More Projects</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="cta-banner-bg"></div>
+    <div class="container cta-content reveal">
+      <div class="cta-text">
+        <span class="section-tag">Start a Project</span>
+        <h2>Inspired? Let's Build <span>Yours Next</span></h2>
+        <p>Contact us to discuss your project requirements and get a detailed consultation and quotation.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="/contact#inquiry" class="btn btn-primary btn-lg">🏗️ Start Your Project</a>
+        <a href="https://wa.me/919876543210?text=Hello!%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project." class="btn btn-whatsapp btn-lg" target="_blank" rel="noopener">💬 WhatsApp Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="navbar-logo">
+            <div class="logo-icon">🏗️</div>
+            <div class="logo-text">
+              <span class="logo-name">Suyog Constructions</span>
+              <span class="logo-tagline">Building Excellence</span>
+            </div>
+          </a>
+          <p>Building dreams and crafting excellence for over 15 years. Your trusted construction partner in Pune.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-link" aria-label="Facebook">📘</a>
+            <a href="#" class="social-link" aria-label="Instagram">📷</a>
+            <a href="#" class="social-link" aria-label="LinkedIn">💼</a>
+            <a href="https://wa.me/919876543210" class="social-link" aria-label="WhatsApp" target="_blank" rel="noopener">💬</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="/" class="footer-link">Home</a></li>
+            <li><a href="/about" class="footer-link">About Us</a></li>
+            <li><a href="/services" class="footer-link">Our Services</a></li>
+            <li><a href="/projects" class="footer-link">Portfolio</a></li>
+            <li><a href="/contact" class="footer-link">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Our Services</h4>
+          <ul class="footer-links">
+            <li><a href="/services" class="footer-link">Residential</a></li>
+            <li><a href="/services" class="footer-link">Commercial</a></li>
+            <li><a href="/services" class="footer-link">Renovation</a></li>
+            <li><a href="/services" class="footer-link">Interior Design</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon">📍</span>
+            <span>Suyog Constructions, Pune, Maharashtra</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon">📞</span>
+            <a href="tel:+919876543210">+91 98765 43210</a>
+          </div>
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon">✉️</span>
+            <a href="mailto:info@suyogconstructions.com">info@suyogconstructions.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2024 <a href="/">Suyog Constructions</a>. All rights reserved.</p>
+        <div class="footer-legal"><a href="#">Privacy</a><a href="#">Terms</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/919876543210?text=Hello%20Suyog%20Constructions!" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+  <div class="toast-container" id="toast-container"></div>
+  <script src="/js/main.js"></script>
+  <script src="/js/projects.js"></script>
+  <script src="/js/animations.js"></script>
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard — Suyog Constructions</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body class="dashboard-page">
+
+  <!-- ── Sidebar ──────────────────────────────────────────────────────────── -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="sidebar-logo">🏗️</span>
+      <div class="sidebar-brand-text">
+        <span class="sidebar-brand-name">Suyog</span>
+        <span class="sidebar-brand-sub">Admin Panel</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav" aria-label="Admin navigation">
+      <button class="nav-item active" data-section="overview" id="nav-overview">
+        <span class="nav-icon">📊</span>
+        <span class="nav-label">Overview</span>
+      </button>
+      <button class="nav-item" data-section="inquiries" id="nav-inquiries">
+        <span class="nav-icon">📋</span>
+        <span class="nav-label">Inquiries</span>
+        <span class="nav-badge" id="inquiries-badge" style="display:none;"></span>
+      </button>
+      <button class="nav-item" data-section="contacts" id="nav-contacts">
+        <span class="nav-icon">💬</span>
+        <span class="nav-label">Messages</span>
+        <span class="nav-badge" id="contacts-badge" style="display:none;"></span>
+      </button>
+      <button class="nav-item" data-section="projects" id="nav-projects">
+        <span class="nav-icon">🏢</span>
+        <span class="nav-label">Projects</span>
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-avatar">👤</div>
+        <div class="sidebar-user-info">
+          <span class="sidebar-username" id="sidebar-username">Admin</span>
+          <span class="sidebar-role">Administrator</span>
+        </div>
+      </div>
+      <button id="logout-btn" class="logout-btn" title="Logout">🚪</button>
+    </div>
+  </aside>
+
+  <!-- ── Mobile Topbar ────────────────────────────────────────────────────── -->
+  <header class="topbar" id="topbar">
+    <button class="topbar-menu-btn" id="sidebar-toggle" aria-label="Toggle menu">☰</button>
+    <div class="topbar-brand">🏗️ Suyog Admin</div>
+    <button id="topbar-logout-btn" class="topbar-logout" title="Logout">🚪</button>
+  </header>
+
+  <!-- ── Main Content ──────────────────────────────────────────────────────── -->
+  <main class="main-content" id="main-content">
+
+    <!-- ── Overview Section ───────────────────────────────────────── -->
+    <section class="section" id="section-overview">
+      <div class="section-header">
+        <h2 class="section-title">Dashboard Overview</h2>
+        <p class="section-subtitle">Welcome back! Here's what's happening.</p>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="stats-grid">
+        <div class="stat-card stat-card--gold">
+          <div class="stat-icon">📋</div>
+          <div class="stat-info">
+            <div class="stat-value" id="stat-total-inquiries">—</div>
+            <div class="stat-label">Total Inquiries</div>
+          </div>
+        </div>
+        <div class="stat-card stat-card--blue">
+          <div class="stat-icon">🆕</div>
+          <div class="stat-info">
+            <div class="stat-value" id="stat-new-inquiries">—</div>
+            <div class="stat-label">New (Unactioned)</div>
+          </div>
+        </div>
+        <div class="stat-card stat-card--green">
+          <div class="stat-icon">💬</div>
+          <div class="stat-info">
+            <div class="stat-value" id="stat-total-messages">—</div>
+            <div class="stat-label">Contact Messages</div>
+          </div>
+        </div>
+        <div class="stat-card stat-card--purple">
+          <div class="stat-icon">🏢</div>
+          <div class="stat-info">
+            <div class="stat-value" id="stat-total-projects">—</div>
+            <div class="stat-label">Portfolio Projects</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Inquiries -->
+      <div class="card mt-6">
+        <div class="card-header">
+          <h3 class="card-title">Recent Inquiries</h3>
+          <button class="btn-link" data-goto="inquiries">View All →</button>
+        </div>
+        <div class="table-wrapper">
+          <table class="data-table" id="recent-inquiries-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Service</th>
+                <th>Phone</th>
+                <th>Status</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody id="recent-inquiries-body">
+              <tr><td colspan="5" class="loading-cell">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Inquiries Section ───────────────────────────────────────── -->
+    <section class="section" id="section-inquiries" style="display:none;">
+      <div class="section-header">
+        <h2 class="section-title">Project Inquiries</h2>
+        <div class="section-actions">
+          <select id="inquiry-status-filter" class="filter-select">
+            <option value="">All Status</option>
+            <option value="new">New</option>
+            <option value="contacted">Contacted</option>
+            <option value="in_progress">In Progress</option>
+            <option value="closed">Closed</option>
+          </select>
+          <button class="btn-secondary" id="refresh-inquiries-btn">🔄 Refresh</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Service</th>
+                <th>Budget</th>
+                <th>Location</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="inquiries-body">
+              <tr><td colspan="9" class="loading-cell">Loading inquiries…</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="pagination" id="inquiries-pagination"></div>
+      </div>
+    </section>
+
+    <!-- ── Contacts Section ───────────────────────────────────────── -->
+    <section class="section" id="section-contacts" style="display:none;">
+      <div class="section-header">
+        <h2 class="section-title">Contact Messages</h2>
+        <button class="btn-secondary" id="refresh-contacts-btn">🔄 Refresh</button>
+      </div>
+
+      <div class="messages-grid" id="messages-grid">
+        <div class="loading-cell" style="text-align:center;padding:3rem;">Loading messages…</div>
+      </div>
+    </section>
+
+    <!-- ── Projects Section ───────────────────────────────────────── -->
+    <section class="section" id="section-projects" style="display:none;">
+      <div class="section-header">
+        <h2 class="section-title">Portfolio Projects</h2>
+        <button class="btn-primary" id="add-project-btn">+ Add Project</button>
+      </div>
+
+      <div class="projects-admin-grid" id="projects-admin-grid">
+        <div class="loading-cell" style="text-align:center;padding:3rem;">Loading projects…</div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Sidebar Overlay (mobile) ─────────────────────────────────────────── -->
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <!-- ── Inquiry Detail Modal ─────────────────────────────────────────────── -->
+  <div class="modal-backdrop" id="inquiry-modal-backdrop" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="inquiry-modal-title">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title" id="inquiry-modal-title">Inquiry Details</h3>
+        <button class="modal-close" id="close-inquiry-modal" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body" id="inquiry-modal-body"></div>
+      <div class="modal-footer">
+        <label class="modal-label">Update Status:</label>
+        <div class="modal-status-actions" id="modal-status-actions"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Project Form Modal ────────────────────────────────────────────────── -->
+  <div class="modal-backdrop" id="project-modal-backdrop" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
+    <div class="modal modal--wide">
+      <div class="modal-header">
+        <h3 class="modal-title" id="project-modal-title">Add Project</h3>
+        <button class="modal-close" id="close-project-modal" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body">
+        <form id="project-form" novalidate>
+          <input type="hidden" id="project-id" />
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="proj-title">Project Title *</label>
+              <input type="text" id="proj-title" class="form-input" placeholder="e.g. Shree Villa — Luxury Residence" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="proj-category">Category *</label>
+              <select id="proj-category" class="form-input" required>
+                <option value="">Select category</option>
+                <option value="residential">Residential</option>
+                <option value="commercial">Commercial</option>
+                <option value="renovation">Renovation</option>
+                <option value="interior">Interior</option>
+                <option value="structural">Structural</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="proj-description">Description *</label>
+            <textarea id="proj-description" class="form-input form-textarea" rows="3" placeholder="Describe the project..." required></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="proj-location">Location *</label>
+              <input type="text" id="proj-location" class="form-input" placeholder="e.g. Kothrud, Pune" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="proj-status">Status</label>
+              <select id="proj-status" class="form-input">
+                <option value="completed">Completed</option>
+                <option value="ongoing">Ongoing</option>
+                <option value="planned">Planned</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="proj-area">Area (sqft)</label>
+              <input type="number" id="proj-area" class="form-input" placeholder="e.g. 3200" min="0" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="proj-year">Year Completed</label>
+              <input type="number" id="proj-year" class="form-input" placeholder="e.g. 2024" min="2000" max="2030" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="proj-client">Client Name</label>
+              <input type="text" id="proj-client" class="form-input" placeholder="e.g. Mr. Anil Shinde" />
+            </div>
+            <div class="form-group form-group--checkbox">
+              <label class="checkbox-label">
+                <input type="checkbox" id="proj-featured" />
+                <span class="checkbox-custom"></span>
+                Featured Project
+              </label>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn-secondary" id="cancel-project-btn">Cancel</button>
+            <button type="submit" class="btn-primary" id="save-project-btn">Save Project</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Toast Container ───────────────────────────────────────────────────── -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
